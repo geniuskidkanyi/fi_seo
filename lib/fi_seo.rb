@@ -148,8 +148,8 @@ module FiSeo
 
 
     def create_dynamic_seo_record
-      DynamicSeo.create(seoable_type: self.class.to_s, seoable_id: id, title: self.title_value,
-                        description: self.description_value, keywords: self.keywords_value)
+      # DynamicSeo.create_with(seoable_type: self.class.to_s, seoable_id: id, title: self.title_value,
+      #                   description: self.description_value, keywords: self.keywords_value)
     end
 
     def update_dynamic_seo_record
