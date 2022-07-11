@@ -148,8 +148,8 @@ module FiSeo
 
 
     def create_dynamic_seo_record
-      dynamic_seo = DynamicSeo.find_or_create_by!(seoable_type: self.class.to_s, seoable_id: self.id)
-      dynamic_seo.update(title: self.title_value, description: self.description_value, keywords: self.keywords_value)
+       DynamicSeo.create_with(title: self.title_value,
+                        description: self.description_value, keywords: self.keywords_value).find_or_create_by(seoable_type: self.class.to_s, seoable_id: id)
     end
 
     def update_dynamic_seo_record
