@@ -91,7 +91,7 @@ module FiSeo
       class_attribute :seoable_options
       self.seoable_options = configuration
 
-      # self.send('after_create', :create_dynamic_seo_record)
+      self.send('after_create', :create_dynamic_seo_record)
       self.send('after_update', :update_dynamic_seo_record)
       self.send('has_one', :dynamic_seo, as: :seoable, dependent: :delete)
       self.send('accepts_nested_attributes_for', :dynamic_seo)
@@ -148,6 +148,7 @@ module FiSeo
 
 
     def create_dynamic_seo_record
+      binding.pry
        DynamicSeo.create_with(title: self.title_value,
                         description: self.description_value, keywords: self.keywords_value).find_or_create_by(seoable_type: self.class.to_s, seoable_id: id)
     end
